@@ -1,5 +1,7 @@
 #pragma once
 #include<iostream>
+#include<iterator>
+#include<assert.h>
 
 
 namespace std_my
@@ -7,8 +9,6 @@ namespace std_my
 	template<typename T>
 	class forward_list
 	{
-		template<typename T>
-		class iterator;
 		template<typename T>
 		struct Node
 		{
@@ -27,18 +27,38 @@ namespace std_my
 		void push_front(const T&);
 		void push_front(T&&);
 		void pop_front();
+		void insert_after(const T&);
 		void clear() noexcept;
 		bool empty() const { return _root == nullptr; }
 		void remove(const T&);
 		forward_list<T> &operator=(forward_list<T> &&) noexcept;
 		forward_list<T> &operator=(const forward_list<T> &);
-		class iterator
+		class forward_iterator : public std::iterator<std::forward_iterator_tag, T>
 		{
+			friend class forward_list<T>;
+		public:
+			T &operator*() { return pointer->_info; }
+			forward_iterator& operator++() noexcept { pointer = pointer->_link; return *this; }
+			forward_iterator& operator++(T) { forward_iterator &temp = *this; pointer = pointer->_link; return temp; }
+			bool operator !=(const forward_iterator& other) const { return pointer != other.pointer; }
+			bool operator == (const forward_iterator& other) const { return pointer == other.pointer; }
+			forward_iterator() :pointer(nullptr) { }
+			Node<T> *pointer;
+			forward_iterator(Node<T> *pointer) :pointer(pointer) { }
+
 
 		};
-
-
+		forward_iterator begin() { return forward_iterator(this->_root); }
+		forward_iterator end() { return  forward_iterator(); }
 	};
+
+
+
+
+
+
+
+
 
 	template<typename T>
 	void forward_list<T>::push_front(const T& el)
@@ -168,7 +188,7 @@ namespace std_my
 
 	template<typename T>
 	forward_list<T>::~forward_list()
-	{			
+	{
 		if (_root != nullptr)
 		{
 			clear();
