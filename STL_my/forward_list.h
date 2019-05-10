@@ -30,7 +30,7 @@ namespace std_my
 		void push_front(const T&);
 		void push_front(T&&);
 		void pop_front();
-		void insert_after(const T&);
+		void insert_after(cf_iterator, const T&);
 		void clear() noexcept;
 		bool empty() const { return _root == nullptr; }
 		void remove(const T&);
@@ -38,9 +38,9 @@ namespace std_my
 		forward_list<T> &operator=(const forward_list<T> &);
 		class f_iterator : public std::iterator<std::forward_iterator_tag, T>
 		{
-
-		public:
 			friend class forward_list<T>;
+		public:
+
 			T &operator*() { return pointer->_info; }
 			f_iterator& operator++() noexcept { pointer = pointer->_link; return *this; }
 			f_iterator operator++(T) noexcept { f_iterator &temp = *this; pointer = pointer->_link; return temp; }
@@ -54,16 +54,16 @@ namespace std_my
 
 		class cf_iterator : std::iterator<std::forward_iterator_tag, T, ptrdiff_t, const T*, const T&>
 		{
-		private:
+			friend class forward_list<T>;
 			const Node<T> *pointer;
 		public:
 			cf_iterator(Node<T> *pointer = nullptr) : pointer(pointer) { }
 			cf_iterator(const  f_iterator& i) : pointer(i.pointer) { }
 			const	T&  operator*() { return pointer->_info; }
 			cf_iterator& operator++() noexcept { pointer = pointer->_link; return *this; }
-			cf_iterator operator++(T) noexcept { cf_iterator &tmp = *this; pointer = pointer->_info; return tmp; }
-			bool operator==(const cf_iterator& other) const { return pointer == other.pointer; }
-			bool operator!=(const cf_iterator& other) const { return pointer != other.pointer; }
+			cf_iterator operator++(T) noexcept { cf_iterator &tmp = *this; pointer = pointer->_link; return tmp; }
+			bool operator==(const cf_iterator& other) const { return this->pointer == other.pointer; }
+			bool operator!=(const cf_iterator& other) const { return this->pointer != other.pointer; }
 		};
 		friend bool operator == (f_iterator a, cf_iterator b) { return a.pointer == b.pointer; }
 		friend bool operator != (f_iterator a, cf_iterator b) { return a.pointer != b.pointer; }
@@ -77,6 +77,17 @@ namespace std_my
 		cf_iterator cbegin() const { return cf_iterator(this->_root); }
 		cf_iterator cend() const { return cf_iterator(); }
 	};
+
+	template<typename T>
+	void forward_list<T>::insert_after(cf_iterator i, const T& el)
+	{
+		Node<T> *tmp = const_cast<Node<T>*>(i.pointer);
+		Node<T> *t = new Node<T>(el);
+		t->_link = tmp;
+		this->_root = t;
+		++size; 
+			   
+	}
 
 
 
@@ -203,6 +214,7 @@ namespace std_my
 		tmp->_link = _root->_link;
 		delete _root;
 		_root = &tmp0;
+		--size;
 	}
 
 
