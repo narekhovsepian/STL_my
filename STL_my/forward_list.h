@@ -9,6 +9,7 @@ namespace std_my
 	template<typename T>
 	class forward_list
 	{
+
 		template<typename T>
 		struct Node
 		{
@@ -20,6 +21,8 @@ namespace std_my
 		Node<T> *_root = nullptr;
 		size_t size = 0;
 	public:
+		class f_iterator;
+		class cf_iterator;
 		forward_list() : _root(nullptr) { }
 		~forward_list();
 		T &front();
@@ -33,30 +36,47 @@ namespace std_my
 		void remove(const T&);
 		forward_list<T> &operator=(forward_list<T> &&) noexcept;
 		forward_list<T> &operator=(const forward_list<T> &);
-		class forward_iterator : public std::iterator<std::forward_iterator_tag, T>
+		class f_iterator : public std::iterator<std::forward_iterator_tag, T>
 		{
-			friend class forward_list<T>;
+
 		public:
+			friend class forward_list<T>;
 			T &operator*() { return pointer->_info; }
-			forward_iterator& operator++() noexcept { pointer = pointer->_link; return *this; }
-			forward_iterator& operator++(T) { forward_iterator &temp = *this; pointer = pointer->_link; return temp; }
-			bool operator !=(const forward_iterator& other) const { return pointer != other.pointer; }
-			bool operator == (const forward_iterator& other) const { return pointer == other.pointer; }
-			forward_iterator() :pointer(nullptr) { }
+			f_iterator& operator++() noexcept { pointer = pointer->_link; return *this; }
+			f_iterator operator++(T) noexcept { f_iterator &temp = *this; pointer = pointer->_link; return temp; }
+			bool operator !=(const f_iterator& other) const { return pointer != other.pointer; }
+			bool operator == (const f_iterator& other) const { return pointer == other.pointer; }
+			f_iterator(Node<T> *pointer) :pointer(pointer) { }
+			f_iterator() :pointer(nullptr) { }
+		private:
 			Node<T> *pointer;
-			forward_iterator(Node<T> *pointer) :pointer(pointer) { }
-
-
 		};
-		forward_iterator begin() { return forward_iterator(this->_root); }
-		forward_iterator end() { return  forward_iterator(); }
+
+		class cf_iterator : std::iterator<std::forward_iterator_tag, T, ptrdiff_t, const T*, const T&>
+		{
+		private:
+			const Node<T> *pointer;
+		public:
+			cf_iterator(Node<T> *pointer = nullptr) : pointer(pointer) { }
+			cf_iterator(const  f_iterator& i) : pointer(i.pointer) { }
+			const	T&  operator*() { return pointer->_info; }
+			cf_iterator& operator++() noexcept { pointer = pointer->_link; return *this; }
+			cf_iterator operator++(T) noexcept { cf_iterator &tmp = *this; pointer = pointer->_info; return tmp; }
+			bool operator==(const cf_iterator& other) const { return pointer == other.pointer; }
+			bool operator!=(const cf_iterator& other) const { return pointer != other.pointer; }
+		};
+		friend bool operator == (f_iterator a, cf_iterator b) { return a.pointer == b.pointer; }
+		friend bool operator != (f_iterator a, cf_iterator b) { return a.pointer != b.pointer; }
+		friend bool operator == (cf_iterator a, f_iterator b) { return a.pointer == b.pointer; }
+		friend bool operator != (cf_iterator a, f_iterator b) { return a.pointer != b.pointer; }
+
+
+
+		f_iterator begin() { return f_iterator(this->_root); }
+		f_iterator end() { return  f_iterator(); }
+		cf_iterator cbegin() const { return cf_iterator(this->_root); }
+		cf_iterator cend() const { return cf_iterator(); }
 	};
-
-
-
-
-
-
 
 
 
