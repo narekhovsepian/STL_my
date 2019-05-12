@@ -5,9 +5,11 @@ namespace std_my
 	template<typename T>
 	class list
 	{
-		tmeplate<typename T>
+		template<typename T>
 		struct Node
 		{
+			T _info;
+			Node<T> *
 
 		};
 	};

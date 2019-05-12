@@ -82,11 +82,34 @@ namespace std_my
 	void forward_list<T>::insert_after(cf_iterator i, const T& el)
 	{
 		Node<T> *tmp = const_cast<Node<T>*>(i.pointer);
-		Node<T> *t = new Node<T>(el);
-		t->_link = tmp;
-		this->_root = t;
-		++size; 
-			   
+
+		if (i == cbegin())
+		{
+			Node<T> *t = new Node<T>(el);
+			t->_link = tmp;
+			tmp = t;
+			this->_root = tmp;
+
+		}
+		else if (i == cend() && tmp == nullptr)
+		{
+			Node<T> *t = _root;
+			while (t->_link != nullptr)
+			{
+				t = t->_link;
+			}
+			Node<T> *l = new Node<T>(el);
+			t->_link = l;
+		
+
+		}
+		else
+		{
+
+			Node<T> *t = new Node<T>(el);
+			t->_link = tmp->_link;
+			tmp->_link = t;
+		}
 	}
 
 
