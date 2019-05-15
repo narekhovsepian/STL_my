@@ -1,25 +1,35 @@
 #include<iostream>
 #include<forward_list>
 #include<list>
+#include<algorithm>
+#include<vector>
 #include"forward_list.h"
-
+#include"list.h"
 
 int main()
 {
+
+	std_my::list<int> li;
+	std_my::list<int> d;
 	std_my::forward_list<int> f;
+	std_my::forward_list<int> u;
 
 	for (int i = 0; i < 10; ++i)
 	{
+		//li.push_back(i);
+		d.push_front(i);
 		f.push_front(i);
+
+
 	}
-	std_my::forward_list<int>::cf_iterator i = f.begin();
-	
-	f.insert_after(f.cend(), 456);
 
-	f.insert_after(++i, 456);
+	li = std::move(d);
+	for (auto t : li)
+		std::cout << t << "  ";
 
-	for (auto u : f)
-		std::cout << u << "  ";
+
+
+
 
 
 	std::cout << std::endl;

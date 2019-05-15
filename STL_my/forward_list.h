@@ -19,7 +19,7 @@ namespace std_my
 			Node() :_info(0), _link(nullptr) { }
 		};
 		Node<T> *_root = nullptr;
-		size_t size = 0;
+		size_t _size = 0;
 	public:
 		class f_iterator;
 		class cf_iterator;
@@ -40,7 +40,6 @@ namespace std_my
 		{
 			friend class forward_list<T>;
 		public:
-
 			T &operator*() { return pointer->_info; }
 			f_iterator& operator++() noexcept { pointer = pointer->_link; return *this; }
 			f_iterator operator++(T) noexcept { f_iterator &temp = *this; pointer = pointer->_link; return temp; }
@@ -65,12 +64,11 @@ namespace std_my
 			bool operator==(const cf_iterator& other) const { return this->pointer == other.pointer; }
 			bool operator!=(const cf_iterator& other) const { return this->pointer != other.pointer; }
 		};
+
 		friend bool operator == (f_iterator a, cf_iterator b) { return a.pointer == b.pointer; }
 		friend bool operator != (f_iterator a, cf_iterator b) { return a.pointer != b.pointer; }
 		friend bool operator == (cf_iterator a, f_iterator b) { return a.pointer == b.pointer; }
 		friend bool operator != (cf_iterator a, f_iterator b) { return a.pointer != b.pointer; }
-
-
 
 		f_iterator begin() { return f_iterator(this->_root); }
 		f_iterator end() { return  f_iterator(); }
@@ -100,12 +98,9 @@ namespace std_my
 			}
 			Node<T> *l = new Node<T>(el);
 			t->_link = l;
-		
-
 		}
 		else
 		{
-
 			Node<T> *t = new Node<T>(el);
 			t->_link = tmp->_link;
 			tmp->_link = t;
@@ -120,7 +115,6 @@ namespace std_my
 		if (!_root)
 		{
 			_root = new Node<T>(el);
-
 		}
 		else
 		{
@@ -128,13 +122,13 @@ namespace std_my
 			tmp->_link = _root;
 			_root = tmp;
 		}
-		++size;
+		++_size;
 	}
 
 	template<typename T>
 	void forward_list<T>::push_front(T &&el)
 	{
-		if (_root != nullptr)
+		if (!_root)
 			_root = new Node<T>(el);
 		else
 		{
@@ -143,7 +137,7 @@ namespace std_my
 			tmp->_link = _root;
 			_root = tmp;
 		}
-		++size;
+		++_size;
 	}
 
 	template<typename T>
@@ -158,9 +152,9 @@ namespace std_my
 		if (other._root != nullptr)
 		{
 			this->_root = std::move(other._root);
-			this->size = std::move(other.size);
+			this->_size = std::move(other._size);
 			other._root = nullptr;
-			other.size = 0;
+			other._size = 0;
 
 		}
 		return *this;
@@ -186,6 +180,7 @@ namespace std_my
 				tmp = new Node<T>(t->_info);
 				this->_root->_link = tmp;
 				this->_root = this->_root->_link;
+				++this->_size;
 
 
 			}
@@ -207,7 +202,7 @@ namespace std_my
 		Node<T> *tmp = _root->_link;
 		delete _root;
 		_root = tmp;
-		--size;
+		--_size;
 	}
 
 	template<typename T>
@@ -219,7 +214,7 @@ namespace std_my
 			tmp = _root->_link;
 			delete _root;
 			_root = tmp;
-			--size;
+			--_size;
 		}
 
 	}
@@ -237,7 +232,7 @@ namespace std_my
 		tmp->_link = _root->_link;
 		delete _root;
 		_root = &tmp0;
-		--size;
+		--_size;
 	}
 
 
@@ -250,9 +245,5 @@ namespace std_my
 			_root = nullptr;
 		}
 	}
-
-
-
-
 
 }
