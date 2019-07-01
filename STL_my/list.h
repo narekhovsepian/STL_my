@@ -10,7 +10,6 @@ namespace std_my
 		template<typename T>
 		struct Node
 		{
-
 			T _info;
 			Node<T> *_head;
 			Node<T> *_rear;
@@ -28,12 +27,12 @@ namespace std_my
 		const T& front() const { return root_head->_info; }
 		T& back() { return root_rear->_info; }
 		const T& back() const { return root_rear->_info; }
-		void insert(const T&);
+		//void insert(const T&);
 		void push_front(const T&);
 		void push_back(const T&);
 		void pop_back();
 		void pop_front();
-		void remove(const T&);
+		void remove(const T&) noexcept;
 		void clear() noexcept;
 		bool empty() const noexcept { return  root_head == nullptr && root_rear == nullptr; }
 		inline	unsigned int size() const { return _size + 1; }
@@ -44,15 +43,17 @@ namespace std_my
 		class b_iterator : public std::iterator<std::bidirectional_iterator_tag, T>
 		{
 			friend class list<T>;
+			friend struct Node<T>;
 			Node<T> *pointer;
 			b_iterator(Node<T> *tmp) :pointer(tmp) { }
 		public:
+			b_iterator(const b_iterator &other) : pointer(other.pointer) { }
 			T& operator*() { return pointer->_info; }
 			b_iterator &operator++() { pointer = pointer->_head; return *this; }
 			b_iterator &operator--() { pointer = pointer->_rear; return *this; }
 			b_iterator operator++(T) { b_iterator tmp = *this; pointer = pointer->_head; return tmp; }
 			b_iterator operator--(T) { b_iterator tmp = *this; pointer = pointer->_rear; return tmp; }
-			bool operator==(const b_iterator &other) const { return this->pointer == other->pointer; }
+			bool operator==(const b_iterator &other) const { return this->pointer == other.pointer; }
 			bool operator!=(const b_iterator &other) const { return this->pointer != other.pointer; }
 			b_iterator() :pointer(nullptr) { }
 
@@ -78,7 +79,7 @@ namespace std_my
 		b_iterator end() { return b_iterator(); }
 		cb_iterator cbegin()const { return cb_iterator(this->root_head); }
 		cb_iterator cend() const { return cb_iterator(); }
-
+		b_iterator insert(b_iterator, const T&);
 
 		friend bool operator == (cb_iterator a, b_iterator b) { return *a == *b; }
 		friend bool operator != (cb_iterator a, b_iterator b) { return *a != *b; }
@@ -119,16 +120,78 @@ namespace std_my
 			this->root_rear = std::move(other.root_rear);
 			this->_size = std::move(other._size);
 			other._size = 0;
+			other._size = 0;
 			other.root_head = nullptr;
 			other.root_rear = nullptr;
 		}
 		return *this;
 	}
 
+	template<typename T>
+	typename	list<T>::b_iterator  list<T>::insert(b_iterator it, const T& value)
+	{
+		//std::cout << it.pointer->_info;
+		if (it == begin())
+		{
+			Node<T> *tm = new Node<T>(value);
+			tm->_head = this->root_head;
+			this->root_head->_rear = tm;
+			this->root_head = tm;
+			it.pointer = tm;
 
+		}
+		else if (it == end())
+		{
+			Node<T> *tmp = new Node<T>(value);
+			this->root_head->_head = tmp;
+			tmp->_rear = this->root_head;
+			this->root_rear = tmp;
+			it.pointer = tmp;
 
+		}
+		else
+		{
+			Node<T> *rt = it.pointer;
+			--it;
+			Node<T> *ht = it.pointer;
+			Node<T> *tmp = new Node<T>(value);
+			ht->_head = tmp;
+			tmp->_rear = ht;
+			tmp->_head = rt;
+			rt->_rear = tmp;
+			it.pointer = tmp;
+			//	std::cout << rt->_info << "  " << ht->_info;
+		}
+		++this->_size;
+		return it;
+	}
 
+	template<typename T>
+	void list<T>::remove(const T &value) noexcept
+	{
+		Node<T> *tmp = this->root_head;
+		Node<T> *ch = nullptr;
+		Node<T> *cr = nullptr;
 
+		while (this->root_head != nullptr && this->root_head->_info != value)
+		{
+			ch = this->root_head;
+			this->root_head = this->root_head->_head;
+			if (this->root_head == nullptr)
+			{
+				std::cout << "not found\n";
+				return;
+			}
+		}
+		cr = this->root_head->_head;
+		delete this->root_head;
+		ch->_head = cr;
+		cr->_rear = ch;
+		this->root_head = tmp;
+		--this->size;
+
+		//std::cout << this->root_head->_info << "  " << ch->_info;
+	}
 
 
 
@@ -219,18 +282,14 @@ namespace std_my
 	}
 
 	template<typename T>
- 	list<T>::~list() 
+	list<T>::~list()
 	{
 		if (root_head != nullptr && root_rear != nullptr)
 		{
 			clear();
 		}
 	}
-
-
-
-
-
+	   	  
 	template<typename T>
 	void list<T>::print()
 	{
