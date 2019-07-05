@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\DataStructure">
+      <UniqueIdentifier>{75ce5487-9193-4aff-b277-5eb3151a32a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Sort">
+      <UniqueIdentifier>{8e09c75a-a0a5-4871-84bf-152cb26dd425}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -32,14 +38,17 @@
     <ClInclude Include="sort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AVL_Tree.h">
+      <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
     <ClInclude Include="binarySearchTree.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
     <ClInclude Include="threadedBinaryTree.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
-    <ClInclude Include="AVL_Tree.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="rbTreeBase.h">
+      <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

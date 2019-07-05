@@ -15,7 +15,8 @@ namespace avl
 			avlNode<T> *lef_child;
 			avlNode<T> *right_child;
 			int height;
-			avlNode(const T &info = T()) : _info(info), lef_child(nullptr), right_child(nullptr), height(0) { }
+			avlNode(const T &info = T()) :_info(info), lef_child(nullptr), right_child(nullptr), height(0) { }
+
 		};
 
 		avlNode<T> *_root = nullptr;
@@ -46,19 +47,21 @@ namespace avl
 	template<typename T>
 	void avl<T>::balance(avlNode<T> *&tree)
 	{
-		if (!tree)
+		if (tree == nullptr)
 			return;
+
 
 		if (height(tree->lef_child) - height(tree->right_child) > ALLOWED_IMBALANCE)
 			if (height(tree->lef_child->lef_child) >= height(tree->lef_child->right_child))
-				LL_rightRotate(tree);
-			else LR_rightleftRotate(tree);
-		else if (height(tree->right_child) - height(tree->lef_child) > ALLOWED_IMBALANCE)
-			if (height(tree->right_child->right_child) >= height(tree->right_child->lef_child))
 				RR_leftRotate(tree);
 			else RL_leftrightRotate(tree);
+		else if (height(tree->right_child) - height(tree->lef_child) > ALLOWED_IMBALANCE)
+			if (height(tree->right_child->right_child) >= height(tree->right_child->lef_child))
+				LL_rightRotate(tree);
+			else LR_rightleftRotate(tree);
 
 		tree->height = max(height(tree->lef_child), height(tree->right_child)) + 1;
+
 	}
 
 
@@ -69,9 +72,13 @@ namespace avl
 		avlNode<T> *x = tree->lef_child;
 		tree->lef_child = x->right_child;
 		x->right_child = tree;
+
+
 		tree->height = max(height(tree->lef_child), height(tree->right_child)) + 1;
 		x->height = max(height(x->lef_child), tree->height) + 1;
 		tree = x;
+		x = nullptr;
+
 	}
 
 	template<typename T>
@@ -80,27 +87,32 @@ namespace avl
 		avlNode<T> *x = tree->right_child;
 		tree->right_child = x->lef_child;
 		x->lef_child = tree;
+
 		tree->height = max(height(tree->lef_child), height(tree->right_child)) + 1;
 		x->height = max(height(x->right_child), tree->height) + 1;
 		tree = x;
+		x = nullptr;
+
 	}
 
 	template<typename T>
 	void avl<T>::LR_rightleftRotate(avlNode<T> *&tree)
 	{
-		if (tree)
-			LL_rightRotate(tree->right_child),
-			RR_leftRotate(tree);
-		else return;
+
+		LL_rightRotate(tree->right_child);
+		RR_leftRotate(tree);
+
+
 	}
 
 	template<typename T>
 	void avl<T>::RL_leftrightRotate(avlNode<T> *&tree)
 	{
-		if (tree)
-			RR_leftRotate(tree->lef_child),
-			LL_rightRotate(tree);
-		else return;
+
+		RR_leftRotate(tree->lef_child);
+		LL_rightRotate(tree);
+
+
 	}
 
 
