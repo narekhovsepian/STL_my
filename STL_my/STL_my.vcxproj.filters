@@ -19,36 +19,69 @@
     <Filter Include="Header Files\Sort">
       <UniqueIdentifier>{8e09c75a-a0a5-4871-84bf-152cb26dd425}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Containers">
+      <UniqueIdentifier>{86d70b64-945f-4a81-9c5b-c7ed48812e1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dessign_Pattern">
+      <UniqueIdentifier>{083a588c-2f19-46b8-848a-fd4065d72b49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\type_traits">
+      <UniqueIdentifier>{1b568b99-1307-42bb-a5bb-b83bc8494454}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Factory.cpp">
+      <Filter>Header Files\Dessign_Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Abstract_Factory.cpp">
+      <Filter>Header Files\Dessign_Pattern</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="forward_list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="set.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sort.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AVL_Tree.h">
-      <Filter>Header Files\DataStructure</Filter>
-    </ClInclude>
-    <ClInclude Include="binarySearchTree.h">
       <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
     <ClInclude Include="threadedBinaryTree.h">
       <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
-    <ClInclude Include="rbTreeBase.h">
+    <ClInclude Include="BST_iterative.h">
       <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="BST_recursive.h">
+      <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="RB_BST_iterative.h">
+      <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="sort.h">
+      <Filter>Header Files\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="rbAbstract.h">
+      <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="forward_list.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="set.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Heap.h">
+      <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Header Files\Dessign_Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="deque.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="type_traits.h">
+      <Filter>Header Files\type_traits</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

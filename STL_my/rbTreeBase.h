@@ -1,51 +1,23 @@
 #pragma once
 
-
-namespace rbTreeBase
+namespace rbBstA
 {
+
+	enum rbcolor { Red = true; Black = false; }
+
+
 	template<typename T>
-	class rbTreeBase
+	class rbBstA
 	{
-		enum color { Red = true, Black = false };
 		template<typename T>
-		struct rbNode
+		struct node
 		{
-			rbNode<T> *parent;
-			rbNode<T> *left_child;
-			rbNode<T> *right_child;
-			color     rbcolor;
-			rbNode() : parent(nullptr), left_child(nullptr), right_child(nullptr), rbcolor(Black) { }
+			T _info{ };
+			node<T>* parent;
+			node<T>* left_child;
+			node<T>* right_child;
+			node(const T& info = T()) : _info{ info },
 
 		};
-		rbNode<T> *_root = nullptr;
-
-
-	protected:
-		inline  rbNode<T> *get_root() const { return _root; }
-		rbNode<T> *grandparent(rbNode<T> *);
-		rbNode<T> *sinling(rbNode<T>*);
-		rbNode<T> *uncle(rbNode<T>*);
-
-
-
-
-
-
 	};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

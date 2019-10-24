@@ -194,7 +194,7 @@ namespace avl
 		else if (tree->_info < item)
 			insert(tree->right_child, item);
 
-		balance(tree);
+		balance(tree); 
 	}
 
 
