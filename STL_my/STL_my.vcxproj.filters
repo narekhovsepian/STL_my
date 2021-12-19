@@ -14,74 +14,95 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Header Files\DataStructure">
-      <UniqueIdentifier>{75ce5487-9193-4aff-b277-5eb3151a32a2}</UniqueIdentifier>
+      <UniqueIdentifier>{455b8e3a-989d-44fa-abfb-9393a9296763}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Sort">
-      <UniqueIdentifier>{8e09c75a-a0a5-4871-84bf-152cb26dd425}</UniqueIdentifier>
+      <UniqueIdentifier>{9a9415f8-01a0-464d-9355-8960eaca2042}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Containers">
-      <UniqueIdentifier>{86d70b64-945f-4a81-9c5b-c7ed48812e1a}</UniqueIdentifier>
+      <UniqueIdentifier>{c9f83ad1-41cc-472f-a8c0-8cc4f76c505e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Dessign_Pattern">
-      <UniqueIdentifier>{083a588c-2f19-46b8-848a-fd4065d72b49}</UniqueIdentifier>
+    <Filter Include="Header Files\DesignPatern">
+      <UniqueIdentifier>{ac7fd014-d767-4fa3-ba39-63cfbdd4558d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\type_traits">
-      <UniqueIdentifier>{1b568b99-1307-42bb-a5bb-b83bc8494454}</UniqueIdentifier>
+    <Filter Include="Header Files\Trait">
+      <UniqueIdentifier>{c550459b-74e9-448d-a95e-afcf5a09ca6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graph">
+      <UniqueIdentifier>{cd3b5743-2141-467a-8000-d2d35d7e9a79}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dessign_Pattern\Abstract_Factory.cpp">
+      <Filter>Header Files\DesignPatern</Filter>
+    </ClCompile>
+    <ClCompile Include="Dessign_Pattern\Factory.cpp">
+      <Filter>Header Files\DesignPatern</Filter>
+    </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Factory.cpp">
-      <Filter>Header Files\Dessign_Pattern</Filter>
-    </ClCompile>
-    <ClCompile Include="Abstract_Factory.cpp">
-      <Filter>Header Files\Dessign_Pattern</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AVL_Tree.h">
+    <ClInclude Include="DataStructure\AVL_Tree.h">
       <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
-    <ClInclude Include="threadedBinaryTree.h">
+    <ClInclude Include="DataStructure\BST_iterative.h">
       <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
-    <ClInclude Include="BST_iterative.h">
+    <ClInclude Include="DataStructure\BST_recursive.h">
       <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
-    <ClInclude Include="BST_recursive.h">
+    <ClInclude Include="DataStructure\Heap.h">
       <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
-    <ClInclude Include="RB_BST_iterative.h">
+    <ClInclude Include="DataStructure\RB_BST.h">
       <Filter>Header Files\DataStructure</Filter>
     </ClInclude>
-    <ClInclude Include="sort.h">
+    <ClInclude Include="DataStructure\RB_BST_iterative.h">
+      <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\rbAbstract.h">
+      <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\rbTreeBase.h">
+      <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort\sort.h">
       <Filter>Header Files\Sort</Filter>
     </ClInclude>
-    <ClInclude Include="rbAbstract.h">
-      <Filter>Header Files\DataStructure</Filter>
-    </ClInclude>
-    <ClInclude Include="forward_list.h">
+    <ClInclude Include="Containers\deque.h">
       <Filter>Header Files\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="list.h">
+    <ClInclude Include="Containers\forward_list.h">
       <Filter>Header Files\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="set.h">
+    <ClInclude Include="Containers\list.h">
       <Filter>Header Files\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="Heap.h">
-      <Filter>Header Files\DataStructure</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
-      <Filter>Header Files\Dessign_Pattern</Filter>
-    </ClInclude>
-    <ClInclude Include="deque.h">
+    <ClInclude Include="Containers\set.h">
       <Filter>Header Files\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="type_traits.h">
-      <Filter>Header Files\type_traits</Filter>
+    <ClInclude Include="Dessign_Pattern\Singleton.h">
+      <Filter>Header Files\DesignPatern</Filter>
+    </ClInclude>
+    <ClInclude Include="type_trait\type_traits.h">
+      <Filter>Header Files\Trait</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\dfs_bfs.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\connected_components.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\minimal_distancei_inGraph.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\topological_sort.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\strongly_connected_components.h">
+      <Filter>Header Files\Graph</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

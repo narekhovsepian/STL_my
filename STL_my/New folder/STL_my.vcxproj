@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -84,8 +84,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(MSMPI_INC);$(MSMPI_INC)\x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(MSMPI_LIB64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -121,31 +120,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Dessign_Pattern\Abstract_Factory.cpp" />
-    <ClCompile Include="Dessign_Pattern\Factory.cpp" />
+    <ClCompile Include="Abstract_Factory.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Containers\deque.h" />
-    <ClInclude Include="Containers\forward_list.h" />
-    <ClInclude Include="Containers\list.h" />
-    <ClInclude Include="Containers\set.h" />
-    <ClInclude Include="DataStructure\AVL_Tree.h" />
-    <ClInclude Include="DataStructure\BST_iterative.h" />
-    <ClInclude Include="DataStructure\BST_recursive.h" />
-    <ClInclude Include="DataStructure\Heap.h" />
-    <ClInclude Include="DataStructure\rbAbstract.h" />
-    <ClInclude Include="DataStructure\rbTreeBase.h" />
-    <ClInclude Include="DataStructure\RB_BST.h" />
-    <ClInclude Include="DataStructure\RB_BST_iterative.h" />
-    <ClInclude Include="Dessign_Pattern\Singleton.h" />
-    <ClInclude Include="Graph\connected_components.h" />
-    <ClInclude Include="Graph\dfs_bfs.h" />
-    <ClInclude Include="Graph\minimal_distancei_inGraph.h" />
-    <ClInclude Include="Graph\strongly_connected_components.h" />
-    <ClInclude Include="Graph\topological_sort.h" />
-    <ClInclude Include="Sort\sort.h" />
-    <ClInclude Include="type_trait\type_traits.h" />
+    <ClInclude Include="AVL_Tree.h" />
+    <ClInclude Include="BST_recursive.h" />
+    <ClInclude Include="BST_iterative.h" />
+    <ClInclude Include="deque.h" />
+    <ClInclude Include="forward_list.h" />
+    <ClInclude Include="Heap.h" />
+    <ClInclude Include="list.h" />
+    <ClInclude Include="rbAbstract.h" />
+    <ClInclude Include="RB_BST_iterative.h" />
+    <ClInclude Include="set.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="sort.h" />
+    <ClInclude Include="threadedBinaryTree.h" />
+    <ClInclude Include="type_traits.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
