@@ -19,38 +19,64 @@
 #include <chrono>
 #include<stack>
 #include<io.h>
+#include<set>
 #include"Graph/dfs_bfs.h"
 #include"Graph/connected_components.h"
 #include"Graph/minimal_distancei_inGraph.h"
 #include"Graph/topological_sort.h"
 #include"Graph/strongly_connected_components.h"
+#include"Graph/dijkstra.h"
+#include"Graph/floyd_warshal.h"
 
-void bfs(std::vector<std::vector<int>>& v, int start) {
-	std::vector<int> used(v.size(), -1);
-	used[start] = 0;
-	std::queue<int> q;
-	q.push(start);
-	std::vector<int> distance(v.size());
-	while (!q.empty()) {
-		int current_vertex = q.front();
-		q.pop();
+void dijkstra(std::vector<std::vector<std::pair<int, int>>>& v, int start) {
+	std::vector<int> distance(v.size(), 100000);
+	distance[start] = 0;
+	std::set<std::pair<int, int>> s;
+	s.insert({ 0,start });
+	while (!s.empty()) {
+		int current_vertex = s.begin()->second;
+		s.erase(s.begin());
 		for (int i{}; i != v[current_vertex].size(); ++i) {
-			int adjacent_vertex = v[current_vertex][i];
-			if (used[adjacent_vertex] == -1) {
-				q.push(adjacent_vertex);
-				used[adjacent_vertex] = used[current_vertex] + 1;
+			int adjacent_vertex = v[current_vertex][i].first;
+			int weight = v[current_vertex][i].second;
+			if (distance[current_vertex] + weight < distance[adjacent_vertex]) {
+				s.erase({ distance[adjacent_vertex],adjacent_vertex });
+				distance[adjacent_vertex] = distance[current_vertex] + weight;
+				s.insert({ distance[adjacent_vertex],adjacent_vertex });
 
 			}
 		}
 	}
 
-	for (const auto& i : used) {
+	for (const auto& i : distance) {
 		std::cout << i << "  ";
 	}
 
 }
 
+void floyd_warshall(std::vector<std::vector<int>> graph) {
 
+	for (int k{}; k < graph.size(); ++k) {
+		for (int i{}; i < graph.size(); ++i) {
+			for (int j{}; j < graph.size(); ++j) {
+				graph[i][j] = std::min(graph[i][j], graph[i][k] + graph[k][j]);
+			}
+		}
+	}
+
+	for (int i{}; i != graph.size(); ++i) {
+		for (int j{}; j != graph.size(); ++j) {
+			if (i == j) {
+				std::cout << "0" << " ";
+			}
+			else {
+				std::cout << graph[i][j] << " ";
+			}
+		}
+		std::cout << "\n";
+	}
+
+}
 
 
 
@@ -127,7 +153,39 @@ int main() {
 		{6,7}
 	};
 
+	std::vector<std::vector<std::pair<int, int>>> dgraph{
+		{{1,10},{5,5}},
+		{{0,10},{2,1}},
+		{{1,1},{3,5},{5,7},{6,10}},
+		{{2,5},{4,1}},
+		{{3,1},{6,2}},
+		{{0,5},{2,7},{6,100},{7,3}},
+		{{2,10},{4,2},{5,100},{7,8},{8,100}},
+		{{5,3},{6,8},{9,1}},
+		{{6,100},{9,1}},
+		{{7,1},{8,1}},
+	};
+	const int inf = 1e9 + 7;
+	std::vector<std::vector<int>> fmgraph(dgraph.size(), std::vector<int>(dgraph.size(), inf));
 
+	for (int i{}; i != dgraph.size(); ++i) {
+		for (int j{}; j != dgraph[i].size(); ++j) {
+			fmgraph[i][dgraph[i][j].first] = dgraph[i][j].second;
+			fmgraph[dgraph[i][j].first][i] = dgraph[i][j].second;
+		}
+	}
+
+	for (int i{}; i < dgraph.size(); ++i) {
+		std_my::dijkstra(dgraph, i);
+		std::cout << "\n";
+	}
+	std::cout << "\n\n";
+	//floyd_warshall(fmgraph);
+
+	std_my::floyd_warshal(fmgraph);
+
+
+	//  std_my::dijkstra(dgraph, 0);	
 
 	//	std_my::minimal_distance_graphe(graph, 0);
 
@@ -137,7 +195,7 @@ int main() {
 
 	//	std_my::topological_sort(top_graph);
 
-		std_my::strongly_connected_components(stcgraph);
+	//	std_my::strongly_connected_components(stcgraph);
 
 
 	std::cin.get();

@@ -104,5 +104,11 @@
     <ClInclude Include="Graph\strongly_connected_components.h">
       <Filter>Header Files\Graph</Filter>
     </ClInclude>
+    <ClInclude Include="Graph\dijkstra.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\floyd_warshal.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
