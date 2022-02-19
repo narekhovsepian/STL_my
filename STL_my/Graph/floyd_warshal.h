@@ -4,7 +4,7 @@
 namespace std_my {
 
 	void floyd_warshal(std::vector<std::vector<int>> graph) {
-		const int n = graph.size();
+		int n = graph.size();
 		for (int k{}; k != n; ++k)
 			for (int i{}; i != n; ++i)
 				for (int j{}; j != n; ++j)

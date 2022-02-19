@@ -142,8 +142,10 @@
     <ClInclude Include="Graph\connected_components.h" />
     <ClInclude Include="Graph\dfs_bfs.h" />
     <ClInclude Include="Graph\dijkstra.h" />
+    <ClInclude Include="Graph\eulerPathandCicle.h" />
     <ClInclude Include="Graph\floyd_warshal.h" />
     <ClInclude Include="Graph\minimal_distancei_inGraph.h" />
+    <ClInclude Include="Graph\minimumSpanningTree.h" />
     <ClInclude Include="Graph\strongly_connected_components.h" />
     <ClInclude Include="Graph\topological_sort.h" />
     <ClInclude Include="Sort\sort.h" />

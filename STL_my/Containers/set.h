@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "rbAbstract.h"
-
+//#include "frbAbstract.h"
+#include "DataStructure/rbAbstract.h"
 
 
 
@@ -11,7 +11,7 @@ namespace std_my
 
 
 	template<typename _Key_t >
-	class set : public alg::rbBase< _Key_t, char>
+	class set : protected alg::rbBase< _Key_t, char>
 	{
 	private:
 		typedef alg::node< _Key_t, char> snode;

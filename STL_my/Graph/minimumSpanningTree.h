@@ -1,0 +1,83 @@
+#pragma once
+
+
+namespace std_my {
+
+	//I use Disjoint Set Union
+	// Algorithm Prima
+
+	std::vector<int> parent;
+	std::vector<int> size;
+
+	int find_set(int x) {
+		if (x = parent[x])
+			return x;
+
+		return parent[x] = find_set(parent[x]);
+	}
+
+
+	void union_set(int a, int b) {
+
+		a = find_set(a);
+		b = find_set(b);
+
+		if (a != b) {
+
+			if (size[a] < size[b])
+				std::swap(a, b);
+
+			parent[b] = a;
+			size[a] += size[b];
+
+		}
+
+	}
+
+	struct edge {
+		int a, b, c;
+
+		bool operator <(const edge& e) {
+			return c < e.c;
+		}
+
+	};
+
+
+
+	void minimumpSpanningTree(std::vector<edge>& edges) {
+		int all_cost{};
+
+		parent.resize(edges.size());
+		size.resize(edges.size());
+		
+		for (int i{}; i != edges.size(); ++i)
+			parent[i] = i, size[i] = 1;
+
+		std_my::merge_sort_iter(edges.begin(), edges.end());
+
+		
+
+
+		for (int i{}; i != edges.size(); ++i) {
+
+			int a = edges[i].a;
+			int b = edges[i].b;
+			int c = edges[i].c;
+
+			if (find_set(a) != find_set(b)) {
+				std::cout << a << "  " << b << "\n";
+				all_cost += c;
+				union_set(a, b);
+			}
+		}
+
+		std::cout << all_cost << std::endl;
+	}
+
+
+
+
+
+
+}
