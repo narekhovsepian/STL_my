@@ -116,5 +116,8 @@
     <ClInclude Include="Graph\minimumSpanningTree.h">
       <Filter>Header Files\Graph</Filter>
     </ClInclude>
+    <ClInclude Include="DataStructure\SegmentTree.h">
+      <Filter>Header Files\DataStructure</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

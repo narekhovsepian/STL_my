@@ -138,6 +138,7 @@
     <ClInclude Include="DataStructure\rbTreeBase.h" />
     <ClInclude Include="DataStructure\RB_BST.h" />
     <ClInclude Include="DataStructure\RB_BST_iterative.h" />
+    <ClInclude Include="DataStructure\SegmentTree.h" />
     <ClInclude Include="Dessign_Pattern\Singleton.h" />
     <ClInclude Include="Graph\connected_components.h" />
     <ClInclude Include="Graph\dfs_bfs.h" />
