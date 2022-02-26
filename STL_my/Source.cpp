@@ -266,26 +266,17 @@ int main() {
 	 //};
 
 	 //std_my::minimumpSpanningTree(edges);
-	struct sum {
-
-		int operator()(int a, int b) { return a + b; };
-	}s ;
 	
-	struct min {
-		int operator()(int a, int b) { return std::min(a, b); };
-	} m;
-
 	std::vector<int> a{ 1,2,3,4,5,6,7,8 };
 	int n = a.size() - 1;
-	std_my::tree.resize(4 * n);
+	
 
 
 	//const auto sum = [=](auto a, auto b) -> decltype(a + b) {	return a + b;	};
 
-	std_my::build_tree(a, 1, 0, n, m);
 
-	std::cout << std_my::sum(4, 6, 1, 0, n,m);
 
+	
 
 
 	std::getchar();

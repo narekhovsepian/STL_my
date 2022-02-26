@@ -23,6 +23,7 @@ namespace bst
 		void preorder_traversal_NLR(const Node<T>*);
 		void postorder_traversal_LRN(const Node<T>*);
 		int height(Node<T>*);
+		bool is_balanced(Node<T>*);
 		void NTH_preorder_print(Node<T> *, int, int&);
 		void levelorder_traversal(Node<T>*);
 		void search_recursive(const Node<T>*, const T&);
@@ -38,6 +39,7 @@ namespace bst
 		bst() { }
 		void insert(const T&);
 		int height();
+		bool is_balanced();
 		void level_order_traversal();
 		void inorder_print();
 		void preorder_print();
@@ -293,6 +295,14 @@ namespace bst
 	}
 
 	template<typename T>
+	bool bst<T>::is_balanced(){
+		if (_root)
+			is_balanced(_root);
+		else return 1;
+	}
+
+
+	template<typename T>
 	int bst<T>::height(Node<T> *r)
 	{
 		if (r == nullptr)
@@ -309,6 +319,22 @@ namespace bst
 			return (l_h > r_h) ? l_h + 1 : r_h + 1;
 		}
 	}
+
+
+	template<typename T>
+	bool bst<T>::is_balanced(Node<T>* r) {
+		if (!r)
+			return true;
+
+		int _l = height(r->left_child);
+		int _r = height(r->right_child);
+
+		if (std::abc(_l - _r) <= 1 && is_balanced(r->left_child) && is_balanced(r->right_child))
+			return true;
+
+		return false;
+	}
+
 
 	template<typename T>
 	int bst<T>::height()
