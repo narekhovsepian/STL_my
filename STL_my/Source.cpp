@@ -10,15 +10,15 @@
 #include<fstream>
 #include<regex>
 #include<mutex>
-#include<direct.h>
+//#include<direct.h>
 #include <locale>
 #include <codecvt>
 #include<regex>
-#include<TCHAR.H> 
+//#include<TCHAR.H> 
 #include<time.h>
 #include <chrono>
 #include<stack>
-#include<io.h>
+//#include<io.h>
 #include<set>
 #include<map>
 #include"Graph/dfs_bfs.h"
@@ -33,10 +33,10 @@
 #include"Sort/sort.h"
 #include"Graph/minimumSpanningTree.h"
 #include"DataStructure/SegmentTree.h"
-
-
-
-
+#include"iterator/iterator.hpp"
+#include"Containers/array.hpp"
+#include"Containers/vector.hpp"
+/*
 void dijkstra(std::vector<std::vector<std::pair<int, int>>>& v, int start) {
 	std::vector<int> distance(v.size(), 100000);
 	distance[start] = 0;
@@ -112,15 +112,49 @@ void dfs(std::vector<std::vector<int>>& graph,
 	cycles.push_back(start_vertex);
 }
 
+*/
+
+
 
 
 
 int main() {
 
+/*	std_my::array<int,15> a;
+
+	for(int i{};i!=15;++i) {
+		std::cout << *(a._Elems + i) << " ";
+	}
+*/
+	std_my::array<int,15> b;
+
+	
+
+	for(auto &i: b)
+		i = 5,
+		std::cout << i << " ";
+
+	std::cout << "\n\n";
+
+	for(size_t i{};i!=15;++i)
+		b[i] = i,
+		std::cout << b[i] << " ";
+	
+	std::cout << "\n";
+	for(const auto& i: b)
+		std::cout << i << " ";
+	std::cout << "\n\n";
+	for(int i{};i!=15;++i) {
+		std::cout << *(b.begin() + i) << " ";
+	}
 
 
 
 
+
+	std::cout << "\n";
+//	b.back() = 5;
+//	b.front() = 798;
 	//std::vector<std::vector<int>> v{
 	//	{1,3,4},
 	//	{0,2,3},
@@ -267,8 +301,7 @@ int main() {
 
 	 //std_my::minimumpSpanningTree(edges);
 	
-	std::vector<int> a{ 1,2,3,4,5,6,7,8 };
-	int n = a.size() - 1;
+	
 	
 
 
@@ -279,7 +312,7 @@ int main() {
 	
 
 
-	std::getchar();
+//	std::getchar();
 	return {};
 }
 

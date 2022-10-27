@@ -7,12 +7,14 @@ namespace alg
 
 	template<typename _Key_t, typename _Value_t >
 	class rbBase;
+
 	enum rbcolor { Red = true, Black = false };
+
 	template<typename _Key_t, typename _Value_t >
 	struct node
 	{
-		template<typename _Key_t, typename _Value_t >
-		friend	class rbBase;
+		//template<typename _Key_t, typename _Value_t >
+		friend	class rbBase<_Key_t,_Value_t>;
 
 		typedef node<_Key_t, _Value_t> _Mytype_t;
 		_Key_t _key{ };

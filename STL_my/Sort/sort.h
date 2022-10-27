@@ -171,7 +171,7 @@ namespace std_my
 
 	template<typename _Ty>
 	void heap_sort(_Ty first, _Ty last) {
-		using type = std::iterator_traits<_Ty>::value_type;
+		using type = typename std::iterator_traits<_Ty>::value_type;
 		std::priority_queue<type> pq(first, last);
 		while (!pq.empty()) {
 			*first = pq.top();
