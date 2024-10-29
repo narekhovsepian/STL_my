@@ -194,20 +194,13 @@ namespace bst
 			{
 				search_recursive(r->left_child, item);
 			}
-			else if (r->right_child)
-			{
-				search_recursive(r->right_child, item);
-			}
+
 		}
 		else if (r->_info < item)
 		{
 			if (r->right_child)
 			{
 				search_recursive(r->right_child, item);
-			}
-			else if (r->left_child)
-			{
-				search_recursive(r->left_child, item);
 			}
 		}
 
