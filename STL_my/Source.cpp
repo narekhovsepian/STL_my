@@ -10,6 +10,7 @@
 #include<fstream>
 #include<regex>
 #include<mutex>
+#include<vector>
 //#include<direct.h>
 #include <locale>
 #include <codecvt>
@@ -36,6 +37,7 @@
 #include"iterator/iterator.hpp"
 #include"Containers/array.hpp"
 #include"Containers/vector.hpp"
+#include"DataStructure/AVL_Tree.h"
 /*
 void dijkstra(std::vector<std::vector<std::pair<int, int>>>& v, int start) {
 	std::vector<int> distance(v.size(), 100000);
@@ -120,39 +122,53 @@ void dfs(std::vector<std::vector<int>>& graph,
 
 int main() {
 
+	std_my::avl<int> at;
+
+	for (int i{}; i < 10; ++i) {
+		at.insert(i);
+
+
+	}
+	
+	at.inorder_print();
+
+
+
+
+
 /*	std_my::array<int,15> a;
 
 	for(int i{};i!=15;++i) {
 		std::cout << *(a._Elems + i) << " ";
 	}
 */
-	std_my::array<int,15> b;
+	//std_my::array<int,15> b;
 
-	
+	//
 
-	for(auto &i: b)
-		i = 5,
-		std::cout << i << " ";
+	//for(auto &i: b)
+	//	i = 5,
+	//	std::cout << i << " ";
 
-	std::cout << "\n\n";
+	//std::cout << "\n\n";
 
-	for(size_t i{};i!=15;++i)
-		b[i] = i,
-		std::cout << b[i] << " ";
-	
-	std::cout << "\n";
-	for(const auto& i: b)
-		std::cout << i << " ";
-	std::cout << "\n\n";
-	for(int i{};i!=15;++i) {
-		std::cout << *(b.begin() + i) << " ";
-	}
-
-
+	//for(size_t i{};i!=15;++i)
+	//	b[i] = i,
+	//	std::cout << b[i] << " ";
+	//
+	//std::cout << "\n";
+	//for(const auto& i: b)
+	//	std::cout << i << " ";
+	//std::cout << "\n\n";
+	//for(int i{};i!=15;++i) {
+	//	std::cout << *(b.begin() + i) << " ";
+	//}
 
 
 
-	std::cout << "\n";
+
+
+	//std::cout << "\n";
 //	b.back() = 5;
 //	b.front() = 798;
 	//std::vector<std::vector<int>> v{
@@ -312,7 +328,7 @@ int main() {
 	
 
 
-//	std::getchar();
+	std::getchar();
 	return {};
 }
 

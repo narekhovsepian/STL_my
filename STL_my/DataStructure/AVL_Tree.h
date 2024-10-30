@@ -24,7 +24,7 @@ namespace std_my
 		avlNode<T> *findSmallestNode(avlNode<T>*) const;
 		void LL_rightRotate(avlNode<T> *&); //rotateWithLeftChild
 		void RR_leftRotate(avlNode<T> *&);  // rotateWithRightChild
-		void LR_rightleftRotate(avlNode<T> *&);
+		void LR_rightleftRotate(avlNode<T> *&); 
 		void RL_leftrightRotate(avlNode<T> *&);
 		void balance(avlNode<T> *&);
 		inline int height(const avlNode<T> *tree) const { return (tree) ? tree->height : -1; }
@@ -53,11 +53,11 @@ namespace std_my
 
 		if (height(tree->lef_child) - height(tree->right_child) > ALLOWED_IMBALANCE)
 			if (height(tree->lef_child->lef_child) >= height(tree->lef_child->right_child))
-				RR_leftRotate(tree);
+				LL_rightRotate(tree);
 			else RL_leftrightRotate(tree);
 		else if (height(tree->right_child) - height(tree->lef_child) > ALLOWED_IMBALANCE)
 			if (height(tree->right_child->right_child) >= height(tree->right_child->lef_child))
-				LL_rightRotate(tree);
+				RR_leftRotate(tree);
 			else LR_rightleftRotate(tree);
 
 		tree->height = max(height(tree->lef_child), height(tree->right_child)) + 1;
