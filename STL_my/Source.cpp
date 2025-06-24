@@ -22,22 +22,11 @@
 //#include<io.h>
 #include<set>
 #include<map>
-#include"Graph/dfs_bfs.h"
-#include"Graph/connected_components.h"
-#include"Graph/minimal_distancei_inGraph.h"
-#include"Graph/topological_sort.h"
-#include"Graph/strongly_connected_components.h"
-#include"Graph/dijkstra.h"
-#include"Graph/floyd_warshal.h"
-#include"Graph/eulerPathandCicle.h"
-#include"Containers/set.h"
-#include"Sort/sort.h"
-#include"Graph/minimumSpanningTree.h"
-#include"DataStructure/SegmentTree.h"
-#include"iterator/iterator.hpp"
-#include"Containers/array.hpp"
-#include"Containers/vector.hpp"
-#include"DataStructure/AVL_Tree.h"
+#include"Containers/array.h"
+#include "DataStructure/AVL_Tree.h"
+
+
+
 /*
 void dijkstra(std::vector<std::vector<std::pair<int, int>>>& v, int start) {
 	std::vector<int> distance(v.size(), 100000);
@@ -120,49 +109,16 @@ void dfs(std::vector<std::vector<int>>& graph,
 
 
 
+
+
+
 int main() {
 
-	std_my::avl<int> at;
-
-	for (int i{}; i < 10; ++i) {
-		at.insert(i);
-
-
-	}
 	
-	at.inorder_print();
+	std::vector<int> v;
 
+	std_my::array<int, 5> arr;
 
-
-
-
-/*	std_my::array<int,15> a;
-
-	for(int i{};i!=15;++i) {
-		std::cout << *(a._Elems + i) << " ";
-	}
-*/
-	//std_my::array<int,15> b;
-
-	//
-
-	//for(auto &i: b)
-	//	i = 5,
-	//	std::cout << i << " ";
-
-	//std::cout << "\n\n";
-
-	//for(size_t i{};i!=15;++i)
-	//	b[i] = i,
-	//	std::cout << b[i] << " ";
-	//
-	//std::cout << "\n";
-	//for(const auto& i: b)
-	//	std::cout << i << " ";
-	//std::cout << "\n\n";
-	//for(int i{};i!=15;++i) {
-	//	std::cout << *(b.begin() + i) << " ";
-	//}
 
 
 
@@ -324,31 +280,8 @@ int main() {
 	//const auto sum = [=](auto a, auto b) -> decltype(a + b) {	return a + b;	};
 
 
-
-	
-
-
-	std::getchar();
 	return {};
 }
 
-
-
-//
-//
-//int main() {
-//	std::vector<int> v{ 9,10, 4,12,11, 8,20,19, 5, 3,13, 1,15,18, 7, 6,17,14,16, 2 };
-//	int l[]{ 9,10, 4,12,11, 8,20,19, 5, 3,13, 1,15,18, 7, 6,17,14,16, 2 };
-//	std::vector<int> ra{ 415, 993, 404, 830, 843, 536, 551, 220, 778, 289, 111, 960, 465, 223, 695 };
-//
-//	std::cout << "\n\n\n\n\n";
-//	std::cout << "\n\n";
-//
-//
-//
-//
-//	std::getchar();
-//	return 0;
-//}
 
 

@@ -47,6 +47,7 @@ artifacts/
 
 *_i.c
 *_p.c
+// heto kavelacnem 
 *_i.h
 *.ilk
 *.meta
@@ -259,3 +260,7 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+
+// heto kavelacnem 
+vector.h
